@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Enviar Notificacion Push</h3>
+
+<h4>Usuario Destino:<h4>
+<textarea id="myTextarea">
+u1
+</textarea>
+
+<h4>Mensaje:<h4>
+<textarea id="myTextareaMessage"></textarea>
+
+<p>Para enviar su menjaje oprima el boton.</p>
+
+<button type="button" onclick="myFunction()">Enviar</button>
+
+<p id="demo">este texto se reemplaza en la funcion</p>
+<p id="mensaje">el mensaje debe aparecer aqui</p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTextarea").value;
+    document.getElementById("demo").innerHTML = x;
+    var y = document.getElementById("myTextareaMessage").value;
+    document.getElementById("mensaje").innerHTML = y;
+		
+	var ds = app.dataSources.mysqldb;
+	var sql = "SELECT * from GCMUser where email =";	
+
+	ds.connector.query(sql, x, function(err, query){
+	
+		if(err) console.error(err);
+
+		console.log('Query: \n', query);
+	});
+
+}
+
+
+
+</script>
+
+</body>
+</html>

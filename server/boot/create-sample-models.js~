@@ -1,0 +1,36 @@
+module.exports = function(app) {
+module.exports = function(app) {
+  app.models.GCMUser.attachTo(app.dataSources.mysqldb);
+
+  app.dataSources.mysqldb.automigrate('GCMUser', function(err) {
+    if (err) throw err;
+
+    app.models.GCMUser.create([
+      {name: 'Juan', email: 'juan@gmail.com', gcmid: 'xaxaxaxa'},
+		{name: 'Laura', email: 'laura@gmail.com', gcmid: 'xaxaxaxa'},
+    ], function(err, GCMUser) {
+      if (err) throw err;
+
+      console.log('Models created: \n', GCMUser);
+    });
+  });
+
+
+
+	var ds = app.dataSources.mysqldb;
+  var sql = "SELECT name from GCMUser ";  
+  var param = [];
+
+  //param[0] = "laura@gmail.com";
+
+  ds.connector.query(sql, param, function(err, query){
+  
+    if(err) console.error(err);
+  
+    console.log('Query: \n', query);
+  });
+
+
+  
+};
+

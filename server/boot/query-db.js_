@@ -1,0 +1,18 @@
+module.exports = function(app) {
+  //app.models.GCMUser.attachTo(app.dataSources.mysqldb);
+
+  var ds = app.dataSources.mysqldb;
+  var sql = "SELECT name from GCMUser ";  
+  var param = [];
+
+  //param[0] = "laura@gmail.com";
+
+  ds.connector.query(sql, param, function(err, query){
+  
+    if(err) console.error(err);
+  
+    console.log('Query: \n', query);
+  });
+
+};
+
