@@ -11,21 +11,22 @@ module.exports = {
 	//function sendPushNotification(gcmid, message){
 
 	//var url = 'https://gcm-http.googleapis.com/gcm/send';
-	var api_key = 'AIzaSyBsb3qQ_zcPHaLk4LpzvVR1Lj2_JMZsEk4';
+	//var api_key = 'AIzaSyBsb3qQ_zcPHaLk4LpzvVR1Lj2_JMZsEk4';		//gcmdemo
+	var api_key = 'AIzaSyBc6j3e9UacYZttdVTQG3AYKeOT9rSuyl4';
 	var url = 'http://localhost:3000/api/gcmusers';
 
 
-	var message = new gcm.Message();
+	var msg = new gcm.Message();
 		 
-	message.addData('key1', message);
+	msg.addData('message', message);
 	 
-	var regTokens = ['APA91bH9QblwLKcPpQrl0ISVfsHmcP1umIJUtLtghR-ZfrW4X7f1cD-lLOCaCrxgjmNEegK-8LdczP_otmFQWX0DArWVPGNkwu3y56lig8seLQGfBB7-1G1eTZcZVy32thf5hjStBZzdBLVHpJKdliseL_gPMum0Jg'];
+	var regTokens = [gcmid];
 	 
 	// Set up the sender with you API key 
 	var sender = new gcm.Sender(api_key);
 	 
 	// Now the sender can be used to send messages 
-	sender.send(message, { registrationTokens: regTokens }, function (err, response) {
+	sender.send(msg, { registrationTokens: regTokens }, function (err, response) {
 		if(err) console.error(err);
 		else 	console.log(response);
 	});
