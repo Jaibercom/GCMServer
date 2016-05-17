@@ -1,7 +1,7 @@
 var push = require('../../server/push');
 var example = require('../../server/example');
 
-var request = require('request');
+//var request = require('request');
 var gcm = require('node-gcm');
 
 module.exports = function(GcmUser) {

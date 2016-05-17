@@ -9,7 +9,6 @@
 
 <h4>Usuario Destino:<h4>
 <textarea id="myTextarea">
-u1
 </textarea>
 
 <h4>Mensaje:<h4>
@@ -31,7 +30,8 @@ function myFunction() {
 	
 	$.ajax({
 		type: 'POST',
-		url: 'http://localhost:3000/api/GCMUsers/push',
+		//url: 'http://localhost:3000/api/GCMUsers/push',
+		url: 'http://gcmserver-jaibercom-1.c9users.io:8080/api/GCMUsers/push',
 		data: JSON.stringify({username: user, message: msg}),
 		contentType: 'application/json'
 	}, function(res){
